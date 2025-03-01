@@ -4,7 +4,7 @@
 #include <pwd.h>
 
 void print_users(){
-	stuct passwd *pw;
+	struct passwd *pw;
 	while ((pw = getpwent()) != NULL){
 	printf("Users: %s, Home: %s\n", pw->pw_name, pw->pw_dir);
 	}
