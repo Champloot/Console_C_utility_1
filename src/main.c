@@ -7,6 +7,13 @@
 #include "log.h"
 #include "errors.h"
 
+void simulate_error() {
+	FILE *file = fopen("Non_existent_file.txt", "r");
+	if (file == NULL) {
+		perror("Error: Failed to open file"); // Искусственно созданая ошибка
+	}
+}
+
 int main(int argc, char *argv[]) {
     int opt;
     const char *log_path = NULL;
@@ -48,6 +55,8 @@ int main(int argc, char *argv[]) {
     if (errors_path) {
         redirect_errors(errors_path);
     }
+
+    simulate_error();
 
     // Выполняем команды в зависимости от флагов
     if (users_flag) {
